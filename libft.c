@@ -6,7 +6,7 @@
 /*   By: mrio <mrio@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:50:16 by mrio              #+#    #+#             */
-/*   Updated: 2025/05/16 16:49:58 by mrio             ###   ########.fr       */
+/*   Updated: 2025/05/17 13:52:48 by mrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,27 @@
 
 size_t	ft_putchr(char c)
 {
-	return (write(1, &c, 1));
+	int	ret;
+
+	ret = write(1, &c, 1);
+	if (ret == -1)
+		return (-1);
+	return (ret);
 }
 
 size_t	ft_putstr(char *str)
 {
 	size_t	len;
+	int		ret;
 
 	len = 0;
 	if (str == NULL)
-		return (write(1, "(null)", 6));
+	{
+		ret = write(1, "(null)", 6);
+		if (ret == -1)
+			return (-1);
+		return (ret);
+	}
 	while (*str)
 	{
 		len += ft_putchr(*str);

@@ -6,7 +6,7 @@
 /*   By: mrio <mrio@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 19:26:24 by mrio              #+#    #+#             */
-/*   Updated: 2025/05/15 20:12:18 by mrio             ###   ########.fr       */
+/*   Updated: 2025/05/17 13:53:31 by mrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,19 +77,19 @@ int	ft_printf(const char *str, ...)
 // 	return (0);
 // }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int	main(void)
-{
-	printf(NULL);
-	ft_printf(NULL);
-	// printf("\n");
-	// printf("%d\n", printf("Hello %s\n", "World!"));
-	// printf("%d\n", ft_printf("Hello %s\n", "World!"));
-	// printf("\n");
-	// ft_printf("%d, %s, %c, %x, %p, %%\n", -42, "negative", 'Z', -255, &main);
-	// printf("%d, %s, %c, %x, %p, %%\n", -42, "negative", 'Z', -255, &main);
-	// printf("");
-	// ft_printf("");
-	return (0);
-}
+// int	main(void)
+// {
+// 	printf(NULL);
+// 	ft_printf(NULL);
+// 	// printf("\n");
+// 	// printf("%d\n", printf("Hello %s\n", "World!"));
+// 	// printf("%d\n", ft_printf("Hello %s\n", "World!"));
+// 	// printf("\n");
+// 	// ft_printf("%d, %s, %c, %x, %p, %%\n", -42, "negative", 'Z', -255, &main);
+// 	// printf("%d, %s, %c, %x, %p, %%\n", -42, "negative", 'Z', -255, &main);
+// 	// printf("");
+// 	// ft_printf("");
+// 	return (0);
+// }
