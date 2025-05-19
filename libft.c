@@ -6,7 +6,7 @@
 /*   By: mrio <mrio@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:50:16 by mrio              #+#    #+#             */
-/*   Updated: 2025/05/17 13:52:48 by mrio             ###   ########.fr       */
+/*   Updated: 2025/05/19 16:14:22 by mrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ size_t	ft_putnbr_u(unsigned int c)
 	len = 0;
 	num = c;
 	if (num >= 10)
-		len += ft_putnbr(num / 10);
+		len += ft_putnbr_u(num / 10);
 	len += ft_putchr((num % 10) + '0');
 	return (len);
 }
