@@ -6,7 +6,7 @@
 /*   By: mrio <mrio@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 19:26:24 by mrio              #+#    #+#             */
-/*   Updated: 2025/05/19 16:16:36 by mrio             ###   ########.fr       */
+/*   Updated: 2025/05/21 13:56:57 by mrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	ft_check(va_list ap, char str)
 {
-	size_t	len;
-
-	len = 0;
 	if (str == 's')
 		return (ft_putstr(va_arg(ap, char *)));
 	else if (str == 'd' || str == 'i')
@@ -33,9 +30,7 @@ int	ft_check(va_list ap, char str)
 		return (ft_putchr('%'));
 	else if (str == '\0')
 		return (-1);
-	else
-		return (ft_putchr(str));
-	return (len);
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)
@@ -51,20 +46,21 @@ int	ft_printf(const char *str, ...)
 	while (*str != '\0')
 	{
 		if (*str != '%')
-			len += ft_putchr(*str);
+			result = ft_putchr(*str);
 		else
 		{
 			str++;
 			result = ft_check(ap, *str);
-			if (result == -1)
-				return (va_end(ap), -1);
-			len += result;
 		}
+		if (result == -1)
+			return (va_end(ap), -1);
+		len += result;
 		str++;
 	}
 	return (va_end(ap), len);
 }
 
+// #include <limits.h>
 // #include <stdio.h>
 
 // int	main(void)
@@ -81,5 +77,11 @@ int	ft_printf(const char *str, ...)
 // 			-255, &main));
 // 	printf("%d\n", printf(""));
 // 	printf("%d\n", ft_printf(""));
+// 	printf("%d\n", ft_printf("%p\n", NULL));
+// 	printf("%d\n", printf("%p\n", NULL));
+// 	printf("%d\n", printf("%d\n", INT_MIN));
+// 	printf("%d\n", ft_printf("%d\n", INT_MIN));
+// 	printf("%d\n", printf("%s\n", NULL));
+// 	printf("%d\n", ft_printf("%s\n", NULL));
 // 	return (0);
 // }

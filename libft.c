@@ -6,70 +6,79 @@
 /*   By: mrio <mrio@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:50:16 by mrio              #+#    #+#             */
-/*   Updated: 2025/05/19 16:14:22 by mrio             ###   ########.fr       */
+/*   Updated: 2025/05/21 13:36:24 by mrio             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putchr(char c)
+int	ft_putchr(char c)
 {
-	int	ret;
+	int	result;
 
-	ret = write(1, &c, 1);
-	if (ret == -1)
+	result = write(1, &c, 1);
+	if (result == -1)
 		return (-1);
-	return (ret);
+	return (result);
 }
 
-size_t	ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
-	size_t	len;
-	int		ret;
+	int	len;
+	int	ret;
 
 	len = 0;
 	if (str == NULL)
-	{
-		ret = write(1, "(null)", 6);
-		if (ret == -1)
-			return (-1);
-		return (ret);
-	}
+		return (ft_putstr("(null)"));
 	while (*str)
 	{
-		len += ft_putchr(*str);
+		ret = ft_putchr(*str);
+		if (ret == -1)
+			return (-1);
+		len += ret;
 		str++;
 	}
 	return (len);
 }
 
-size_t	ft_putnbr(int c)
+int	ft_putnbr(int c)
 {
-	size_t	len;
+	int		len;
 	long	num;
+	int		result;
 
 	num = c;
 	len = 0;
 	if (num < 0)
 	{
-		len += ft_putchr('-');
+		result = ft_putchr('-');
+		if (result == -1)
+			return (-1);
+		len += result;
 		num = -num;
 	}
 	if (num >= 10)
 		len += ft_putnbr(num / 10);
-	len += ft_putchr((num % 10) + '0');
+	result = ft_putchr((num % 10) + '0');
+	if (result == -1)
+		return (-1);
+	len += result;
 	return (len);
 }
 
-size_t	ft_putnbr_u(unsigned int c)
+int	ft_putnbr_u(unsigned int c)
 {
-	size_t	len;
+	int		len;
 	long	num;
+	int		result;
 
 	len = 0;
 	num = c;
 	if (num >= 10)
 		len += ft_putnbr_u(num / 10);
-	len += ft_putchr((num % 10) + '0');
+	result = ft_putchr((num % 10) + '0');
+	if (result == -1)
+		return (-1);
+	len += result;
 	return (len);
 }
